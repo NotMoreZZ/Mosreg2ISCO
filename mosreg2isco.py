@@ -81,8 +81,8 @@ class MosregToISCO(object):
         sleep(5)
 
         # Get studentsinfo
-        # TODO: that's awful and will work only with one quarter/semester
-        # TODO: probably need to autodownload excel exports and work with them
+        # TODO: that's awful, probably need to
+        # TODO: autodownload excel exports and work with them
         info = []
         students = self._find_elements_try_hard(
             By.XPATH, '//a[@title="Перейти на страницу оценок ученика"]')
@@ -113,13 +113,13 @@ class MosregToISCO(object):
                     grade = '-'
                 else:
                     if cellclass.count('mark_v'):
-                        grade = self._find_element_try_hard(By.XPATH,
-                                                            gradetextxpathspan.format(
-                                                                sid)).get_attribute('textContent')
+                        grade = self._find_element_try_hard(
+                            By.XPATH, gradetextxpathspan.format(
+                                sid)).get_attribute('textContent')
                     else:
-                        grade = self._find_element_try_hard(By.XPATH,
-                                                            gradetextxpatha.format(
-                                                                sid)).get_attribute('textContent')
+                        grade = self._find_element_try_hard(
+                            By.XPATH, gradetextxpatha.format(
+                                sid)).get_attribute('textContent')
                 for field in range(len(studentinfo)):
                     if not studentinfo[field]:
                         studentinfo[field] = grade
